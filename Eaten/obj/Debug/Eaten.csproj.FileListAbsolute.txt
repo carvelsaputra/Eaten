@@ -11,3 +11,16 @@ D:\Tugas kuliah\Tugas Akhir Visual\Eaten\Eaten\obj\Debug\Eaten.pdb
 D:\Tugas kuliah\Tugas Akhir Visual\Eaten\Eaten\obj\Debug\Eaten.FrmLogin.resources
 D:\Tugas kuliah\Tugas Akhir Visual\Eaten\Eaten\obj\Debug\Eaten.FrmRegister.resources
 D:\Tugas kuliah\Tugas Akhir Visual\Eaten\Eaten\obj\Debug\Eaten.FrmPembayaran.resources
+D:\Projects_Desktop\Eaten\Eaten\bin\Debug\Eaten.exe.config
+D:\Projects_Desktop\Eaten\Eaten\bin\Debug\Eaten.exe
+D:\Projects_Desktop\Eaten\Eaten\bin\Debug\Eaten.pdb
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.csprojAssemblyReference.cache
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.FrmLogin.resources
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.FrmMenuUtama.resources
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.FrmRegister.resources
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.FrmPembayaran.resources
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.Properties.Resources.resources
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.csproj.GenerateResource.cache
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.csproj.CoreCompileInputs.cache
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.exe
+D:\Projects_Desktop\Eaten\Eaten\obj\Debug\Eaten.pdb
