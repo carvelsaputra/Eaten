@@ -7,20 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MySql.Data.MySqlClient;
 namespace Eaten
 {
     public partial class FrmLogin : Form
     {
+        private Connection koneksi = new Connection();
         public FrmLogin()
         {
             InitializeComponent();
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -31,9 +28,36 @@ namespace Eaten
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            FrmMenuUtama utama = new FrmMenuUtama();
-            utama.Show();
-            this.Hide();
+            if(txtUsername.Text.Length == 0 || txtPassword.Text.Length == 0)
+            {
+                MessageBox.Show("Silahkan Isi Username / Password !", "Perhatian", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if(koneksi.openConnection())
+            {
+                string query = String.Concat("SELECT * FROM tb_user where username ='", txtUsername.Text, "' AND password =sha1('", txtPassword.Text, "')");
+                koneksi.cmd = new MySqlCommand(query, koneksi.connection);
+                koneksi.dataReader = koneksi.cmd.ExecuteReader();
+                if(koneksi.dataReader.Read())
+                {
+                    koneksi.dataReader.Close();
+                    koneksi.closeConnection();
+                    this.Hide();
+                    FrmMenuUtama frmMenuUtama = new FrmMenuUtama();
+                    frmMenuUtama.Show();
+                }
+                else
+                {
+                    koneksi.dataReader.Close();
+                    koneksi.closeConnection();
+                    MessageBox.Show("Login gagal !", "Perhatian", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
