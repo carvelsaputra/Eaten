@@ -32,8 +32,9 @@
             this.lblPengguna = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvMenu = new System.Windows.Forms.DataGridView();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_menu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deskripsi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,10 +50,12 @@
             this.txtHarga = new System.Windows.Forms.TextBox();
             this.txtDeskripsi = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMenu
@@ -98,34 +101,47 @@
             this.panel1.Size = new System.Drawing.Size(172, 450);
             this.panel1.TabIndex = 3;
             // 
-            // dataGridView1
+            // dgvMenu
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMenu.AllowUserToAddRows = false;
+            this.dgvMenu.AllowUserToDeleteRows = false;
+            this.dgvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.no,
+            this.id,
             this.nama_menu,
             this.harga,
             this.deskripsi,
             this.status});
-            this.dataGridView1.Location = new System.Drawing.Point(423, 76);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(594, 200);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvMenu.Location = new System.Drawing.Point(423, 76);
+            this.dgvMenu.Name = "dgvMenu";
+            this.dgvMenu.ReadOnly = true;
+            this.dgvMenu.RowHeadersVisible = false;
+            this.dgvMenu.RowHeadersWidth = 51;
+            this.dgvMenu.Size = new System.Drawing.Size(594, 200);
+            this.dgvMenu.TabIndex = 4;
+            this.dgvMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMenu_CellClick);
             // 
             // no
             // 
             this.no.HeaderText = "No.";
+            this.no.MinimumWidth = 6;
             this.no.Name = "no";
             this.no.ReadOnly = true;
             this.no.Width = 50;
             // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 125;
+            // 
             // nama_menu
             // 
             this.nama_menu.HeaderText = "Nama Menu";
+            this.nama_menu.MinimumWidth = 6;
             this.nama_menu.Name = "nama_menu";
             this.nama_menu.ReadOnly = true;
             this.nama_menu.Width = 120;
@@ -133,6 +149,7 @@
             // harga
             // 
             this.harga.HeaderText = "Harga";
+            this.harga.MinimumWidth = 6;
             this.harga.Name = "harga";
             this.harga.ReadOnly = true;
             this.harga.Width = 120;
@@ -140,6 +157,7 @@
             // deskripsi
             // 
             this.deskripsi.HeaderText = "Deskripsi";
+            this.deskripsi.MinimumWidth = 6;
             this.deskripsi.Name = "deskripsi";
             this.deskripsi.ReadOnly = true;
             this.deskripsi.Width = 200;
@@ -147,8 +165,10 @@
             // status
             // 
             this.status.HeaderText = "status";
+            this.status.MinimumWidth = 6;
             this.status.Name = "status";
             this.status.ReadOnly = true;
+            this.status.Width = 125;
             // 
             // btnUpdate
             // 
@@ -156,9 +176,10 @@
             this.btnUpdate.Location = new System.Drawing.Point(184, 398);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(203, 23);
-            this.btnUpdate.TabIndex = 21;
+            this.btnUpdate.TabIndex = 8;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnRefresh
             // 
@@ -166,9 +187,10 @@
             this.btnRefresh.Location = new System.Drawing.Point(291, 332);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 58);
-            this.btnRefresh.TabIndex = 20;
+            this.btnRefresh.TabIndex = 7;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnHapus
             // 
@@ -176,9 +198,10 @@
             this.btnHapus.Location = new System.Drawing.Point(194, 333);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(75, 58);
-            this.btnHapus.TabIndex = 19;
+            this.btnHapus.TabIndex = 6;
             this.btnHapus.Text = "Hapus";
             this.btnHapus.UseVisualStyleBackColor = false;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnTambah
             // 
@@ -186,7 +209,7 @@
             this.btnTambah.Location = new System.Drawing.Point(184, 303);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(203, 23);
-            this.btnTambah.TabIndex = 18;
+            this.btnTambah.TabIndex = 5;
             this.btnTambah.Text = "Tambah Menu";
             this.btnTambah.UseVisualStyleBackColor = false;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
@@ -194,7 +217,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(191, 109);
+            this.label4.Location = new System.Drawing.Point(192, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 16;
@@ -202,15 +225,15 @@
             // 
             // txtNama
             // 
-            this.txtNama.Location = new System.Drawing.Point(194, 76);
+            this.txtNama.Location = new System.Drawing.Point(194, 115);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(203, 20);
-            this.txtNama.TabIndex = 15;
+            this.txtNama.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(191, 59);
+            this.label3.Location = new System.Drawing.Point(192, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 14;
@@ -228,44 +251,62 @@
             // 
             // txtHarga
             // 
-            this.txtHarga.Location = new System.Drawing.Point(194, 126);
+            this.txtHarga.Location = new System.Drawing.Point(194, 154);
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(203, 20);
-            this.txtHarga.TabIndex = 22;
+            this.txtHarga.TabIndex = 2;
             // 
             // txtDeskripsi
             // 
-            this.txtDeskripsi.Location = new System.Drawing.Point(194, 170);
+            this.txtDeskripsi.Location = new System.Drawing.Point(194, 193);
             this.txtDeskripsi.Multiline = true;
             this.txtDeskripsi.Name = "txtDeskripsi";
             this.txtDeskripsi.Size = new System.Drawing.Size(203, 58);
-            this.txtDeskripsi.TabIndex = 24;
+            this.txtDeskripsi.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(191, 153);
+            this.label5.Location = new System.Drawing.Point(192, 176);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 23;
             this.label5.Text = "Deskripsi";
             // 
-            // comboBox1
+            // cbStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(194, 248);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(203, 21);
-            this.comboBox1.TabIndex = 25;
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(194, 277);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(203, 21);
+            this.cbStatus.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(191, 232);
+            this.label6.Location = new System.Drawing.Point(192, 253);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 26;
             this.label6.Text = "Status";
+            // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(194, 76);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(203, 20);
+            this.txtId.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(192, 59);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(16, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Id";
             // 
             // Menu
             // 
@@ -274,7 +315,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1029, 450);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.txtDeskripsi);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtHarga);
@@ -283,17 +324,20 @@
             this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.btnTambah);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtNama);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvMenu);
             this.Controls.Add(this.panel1);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,12 +349,7 @@
         private System.Windows.Forms.Label lblPengguna;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn no;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nama_menu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn harga;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deskripsi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridView dgvMenu;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnHapus;
@@ -322,7 +361,15 @@
         private System.Windows.Forms.TextBox txtHarga;
         private System.Windows.Forms.TextBox txtDeskripsi;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn no;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama_menu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn harga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deskripsi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label7;
     }
 }
