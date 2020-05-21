@@ -31,3 +31,5 @@ D:\Projects_Desktop\eaten\Eaten\bin\Debug\Ubiety.Dns.Core.dll
 D:\Projects_Desktop\eaten\Eaten\bin\Debug\Renci.SshNet.dll
 D:\Projects_Desktop\eaten\Eaten\bin\Debug\MySql.Data.xml
 D:\Projects_Desktop\eaten\Eaten\obj\Debug\Eaten.csproj.CopyComplete
+D:\Projects_Desktop\eaten\Eaten\obj\Debug\Eaten.FrmAdminMenu.resources
+D:\Projects_Desktop\eaten\Eaten\obj\Debug\Eaten.DashboardAdmin.resources

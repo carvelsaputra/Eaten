@@ -38,20 +38,29 @@ namespace Eaten
                 string query = String.Concat("SELECT * FROM tb_user where username ='", txtUsername.Text, "' AND password =sha1('", txtPassword.Text, "')");
                 koneksi.cmd = new MySqlCommand(query, koneksi.connection);
                 koneksi.dataReader = koneksi.cmd.ExecuteReader();
+               
                 if(koneksi.dataReader.Read())
                 {
-                    koneksi.dataReader.Close();
-                    koneksi.closeConnection();
-                    this.Hide();
-                    FrmMenuUtama frmMenuUtama = new FrmMenuUtama();
-                    frmMenuUtama.Show();
+                    if(koneksi.dataReader["status"].ToString().Equals("1"))
+                    {
+                        this.Hide();
+                        DashboardAdmin dashboard = new DashboardAdmin();
+                        dashboard.Show();
+                    }
+                    else if(koneksi.dataReader["status"].ToString().Equals("0"))
+                    {
+                        this.Hide();
+                        FrmMenuUtama frmMenuUtama = new FrmMenuUtama();
+                        frmMenuUtama.Show();
+                    }
+                   
                 }
                 else
                 {
-                    koneksi.dataReader.Close();
-                    koneksi.closeConnection();
                     MessageBox.Show("Login gagal !", "Perhatian", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                koneksi.dataReader.Close();
+                koneksi.closeConnection();
             }
         }
 

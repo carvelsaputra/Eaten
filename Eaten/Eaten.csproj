@@ -48,6 +48,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="DashboardAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardAdmin.Designer.cs">
+      <DependentUpon>DashboardAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAdminMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdminMenu.Designer.cs">
+      <DependentUpon>FrmAdminMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,8 +84,20 @@
     <Compile Include="FrmPembayaran.Designer.cs">
       <DependentUpon>FrmPembayaran.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pengguna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengguna.Designer.cs">
+      <DependentUpon>Pengguna.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DashboardAdmin.resx">
+      <DependentUpon>DashboardAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAdminMenu.resx">
+      <DependentUpon>FrmAdminMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
