@@ -50,6 +50,7 @@ namespace Eaten
         }
         private void bersih()
         {
+            txtUsername.Enabled = false;
             btnHapus.Enabled = false;
             txtUsername.Clear();
             txtPassword.Clear();
@@ -102,7 +103,7 @@ namespace Eaten
             if (koneksi.openConnection())
             {
                 bool updatePassword = false;
-                string query = String.Concat("SELECT password FROM tb_user WHERE Username = '", txtUsername.Text, "' AND (password = '", txtPassword.Text, "' OR password = sha1('", txtPassword.Text, "'))");
+                string query = String.Concat("SELECT password FROM tb_user WHERE username = '", txtUsername.Text, "' AND (password = '", txtPassword.Text, "' OR password = sha1('", txtPassword.Text, "'))");
                 koneksi.cmd = new MySqlCommand(query, koneksi.connection);
                 koneksi.dataReader = koneksi.cmd.ExecuteReader();
 
@@ -115,7 +116,7 @@ namespace Eaten
 
                 if (updatePassword)
                 {
-                    query = String.Concat("UPDATE tb_user SET password = sha1('", txtPassword.Text, "') WHERE username ='",txtUsername,"'");
+                    query = String.Concat("UPDATE tb_user SET password = sha1('", txtPassword.Text, "') WHERE username ='",txtUsername.Text,"'");
                 }
 
                 koneksi.cmd = new MySqlCommand(query, koneksi.connection);
