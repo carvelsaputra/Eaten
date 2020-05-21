@@ -56,6 +56,7 @@
             this.lblMenu.Size = new System.Drawing.Size(66, 25);
             this.lblMenu.TabIndex = 2;
             this.lblMenu.Text = "Menu";
+            this.lblMenu.Click += new System.EventHandler(this.lblMenu_Click);
             // 
             // lblPengguna
             // 

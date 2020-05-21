@@ -10,27 +10,24 @@ using System.Windows.Forms;
 
 namespace Eaten
 {
-    public partial class DashboardAdmin : Form
+    public partial class Menu : Form
     {
-        public DashboardAdmin()
+        public Menu()
         {
             InitializeComponent();
         }
 
         private void lblPengguna_Click(object sender, EventArgs e)
         {
-
             Pengguna pengguna = new Pengguna();
             this.Hide();
             pengguna.Show();
-
         }
 
-        private void lblMenu_Click(object sender, EventArgs e)
+        private void btnTambah_Click(object sender, EventArgs e)
         {
-            Menu menu = new Menu();
-            this.Hide();
-            menu.Show();
+
         }
+
     }
 }

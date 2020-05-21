@@ -70,7 +70,6 @@
             this.lblPengguna.Size = new System.Drawing.Size(110, 25);
             this.lblPengguna.TabIndex = 1;
             this.lblPengguna.Text = "Pengguna";
-            this.lblPengguna.Click += new System.EventHandler(this.lblPengguna_Click);
             // 
             // label1
             // 
@@ -248,6 +247,7 @@
             this.Controls.Add(this.dgvPengguna);
             this.Controls.Add(this.panel1);
             this.Name = "Pengguna";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pengguna";
             this.Load += new System.EventHandler(this.Pengguna_Load);
             this.panel1.ResumeLayout(false);

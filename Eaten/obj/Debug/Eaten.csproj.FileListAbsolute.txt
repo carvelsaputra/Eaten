@@ -80,3 +80,4 @@ D:\Eaten\Eaten\obj\Debug\Eaten.csproj.CoreCompileInputs.cache
 D:\Eaten\Eaten\obj\Debug\Eaten.csproj.CopyComplete
 D:\Eaten\Eaten\obj\Debug\Eaten.exe
 D:\Eaten\Eaten\obj\Debug\Eaten.pdb
+D:\Eaten\Eaten\obj\Debug\Eaten.Menu.resources

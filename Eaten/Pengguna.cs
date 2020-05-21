@@ -21,12 +21,9 @@ namespace Eaten
 
         private void lblMenu_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void lblPengguna_Click(object sender, EventArgs e)
-        {
-
+            Menu menu = new Menu();
+            this.Hide();
+            menu.Show();
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
