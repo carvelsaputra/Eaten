@@ -33,18 +33,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvPengguna = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnTambah = new System.Windows.Forms.Button();
+            this.btnHapus = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPengguna)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +80,6 @@
             this.label1.Size = new System.Drawing.Size(143, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "EATEN";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
@@ -113,16 +112,6 @@
             this.dgvPengguna.Size = new System.Drawing.Size(485, 195);
             this.dgvPengguna.TabIndex = 3;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(178, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "List Pengguna";
-            // 
             // no
             // 
             this.no.HeaderText = "No.";
@@ -150,6 +139,16 @@
             this.status.Name = "status";
             this.status.ReadOnly = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(178, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "List Pengguna";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -159,19 +158,21 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Username";
             // 
-            // textBox1
+            // txtUsername
             // 
-            this.textBox1.Location = new System.Drawing.Point(182, 106);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(203, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtUsername.Location = new System.Drawing.Point(182, 106);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(203, 20);
+            this.txtUsername.TabIndex = 6;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(182, 156);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(203, 20);
-            this.textBox2.TabIndex = 8;
+            this.txtPassword.Location = new System.Drawing.Point(182, 156);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(203, 20);
+            this.txtPassword.TabIndex = 8;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -182,50 +183,52 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Password";
             // 
-            // button1
+            // btnTambah
             // 
-            this.button1.Location = new System.Drawing.Point(182, 197);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(203, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Tambah Admin";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTambah.Location = new System.Drawing.Point(182, 197);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(203, 23);
+            this.btnTambah.TabIndex = 9;
+            this.btnTambah.Text = "Tambah Admin";
+            this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
-            // button2
+            // btnHapus
             // 
-            this.button2.Location = new System.Drawing.Point(192, 227);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 58);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Hapus";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnHapus.Location = new System.Drawing.Point(192, 227);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(75, 58);
+            this.btnHapus.TabIndex = 10;
+            this.btnHapus.Text = "Hapus";
+            this.btnHapus.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnRefresh
             // 
-            this.button3.Location = new System.Drawing.Point(289, 226);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 58);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Refresh";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRefresh.Location = new System.Drawing.Point(289, 226);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 58);
+            this.btnRefresh.TabIndex = 11;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
             // 
             // Pengguna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnHapus);
+            this.Controls.Add(this.btnTambah);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvPengguna);
             this.Controls.Add(this.panel1);
             this.Name = "Pengguna";
             this.Text = "Pengguna";
+            this.Load += new System.EventHandler(this.Pengguna_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPengguna)).EndInit();
@@ -247,11 +250,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn password;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnTambah;
+        private System.Windows.Forms.Button btnHapus;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
