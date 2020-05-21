@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Eaten
 {
+
     public partial class FrmMenuUtama : Form
     {
+        private Connection koneksi = new Connection();
+
         long harga = 0;
         string desk = "";
 
@@ -75,51 +79,26 @@ namespace Eaten
         {
             if (cbjenis.SelectedItem.ToString().Equals("Makanan"))
             {
-                cbpilihan.Items.Add("Bakso");
-                cbpilihan.Items.Add("Mie Ayam");
-                cbpilihan.Items.Add("Nasi Goreng");
-                cbpilihan.Items.Add("Model");
-                cbpilihan.Items.Add("Tekwan");
-                cbpilihan.Items.Add("Laksan");
-                cbpilihan.Items.Add("Lenggang");
-                cbpilihan.Items.Add("Mie Celor");
-                cbpilihan.Items.Add("Celimpungan");
-                cbpilihan.Items.Add("Pempek Kulit");
+                                string query = "SELECT * FROM tb_menu WHERE status = 1";
+                koneksi.cmd = new MySqlCommand(query, koneksi.connection);
+                koneksi.dataAdapter = new MySqlDataAdapter();
+                koneksi.dataAdapter.SelectCommand = koneksi.cmd;
+                koneksi.dataSet = new DataSet();
+                koneksi.dataAdapter.Fill(koneksi.dataSet, "datamenu");
+                cbpilihan.DisplayMember = "nama_menu";
+                cbpilihan.DataSource = koneksi.dataSet.Tables["datamenu"];
 
-                cbpilihan.Items.Remove("Es Kacang Merah");
-                cbpilihan.Items.Remove("Sop Buah");
-                cbpilihan.Items.Remove("Es Teh Manis");
-                cbpilihan.Items.Remove("Es Jeruk");
-                cbpilihan.Items.Remove("Es Campur");
-                cbpilihan.Items.Remove("Kopi Susu");
-                cbpilihan.Items.Remove("Air Mineral");
-                cbpilihan.Items.Remove("Jus Mangga");
-                cbpilihan.Items.Remove("Pop Ice");
-                cbpilihan.Items.Remove("Pocari Sweat");
             }
             else if (cbjenis.SelectedItem.ToString().Equals("Minuman"))
             {
-                cbpilihan.Items.Remove("Bakso");
-                cbpilihan.Items.Remove("Mie Ayam");
-                cbpilihan.Items.Remove("Nasi Goreng");
-                cbpilihan.Items.Remove("Model");
-                cbpilihan.Items.Remove("Tekwan");
-                cbpilihan.Items.Remove("Laksan");
-                cbpilihan.Items.Remove("Lenggang");
-                cbpilihan.Items.Remove("Mie Celor");
-                cbpilihan.Items.Remove("Celimpungan");
-                cbpilihan.Items.Remove("Pempek Kulit");
-
-                cbpilihan.Items.Add("Es Kacang Merah");
-                cbpilihan.Items.Add("Sop Buah");
-                cbpilihan.Items.Add("Es Teh Manis");
-                cbpilihan.Items.Add("Es Jeruk");
-                cbpilihan.Items.Add("Es Campur");
-                cbpilihan.Items.Add("Kopi Susu");
-                cbpilihan.Items.Add("Air Mineral");
-                cbpilihan.Items.Add("Jus Mangga");
-                cbpilihan.Items.Add("Pop Ice");
-                cbpilihan.Items.Add("Pocari Sweat");
+               string query = "SELECT * FROM tb_menu WHERE status = 0";
+                koneksi.cmd = new MySqlCommand(query, koneksi.connection);
+                koneksi.dataAdapter = new MySqlDataAdapter();
+                koneksi.dataAdapter.SelectCommand = koneksi.cmd;
+                koneksi.dataSet = new DataSet();
+                koneksi.dataAdapter.Fill(koneksi.dataSet, "datamenu");
+                cbpilihan.DisplayMember = "nama_menu";
+                cbpilihan.DataSource = koneksi.dataSet.Tables["datamenu"];
             }
         }
 
@@ -301,6 +280,11 @@ namespace Eaten
                     }
                 }
             }
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

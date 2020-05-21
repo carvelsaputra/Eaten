@@ -13,6 +13,7 @@ namespace Eaten
 {
     public partial class Menu : Form
     {
+
         private Connection koneksi = new Connection();
         public Menu()
         {
@@ -82,6 +83,7 @@ namespace Eaten
             txtHarga.Clear();
             txtDeskripsi.Clear();
             txtId.Clear();
+            cbStatus.Items.Clear();
             cbStatus.Items.Add("Makanan");
             cbStatus.Items.Add("Minuman");
             cbStatus.SelectedIndex = 0;
