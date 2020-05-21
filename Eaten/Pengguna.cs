@@ -16,5 +16,20 @@ namespace Eaten
         {
             InitializeComponent();
         }
+
+        private void lblMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPengguna_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
