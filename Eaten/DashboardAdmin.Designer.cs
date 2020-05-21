@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblPengguna = new System.Windows.Forms.Label();
             this.lblMenu = new System.Windows.Forms.Label();
+            this.lblPengguna = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.panel1.Controls.Add(this.lblMenu);
             this.panel1.Controls.Add(this.lblPengguna);
             this.panel1.Controls.Add(this.label1);
@@ -47,15 +47,15 @@
             this.panel1.Size = new System.Drawing.Size(172, 450);
             this.panel1.TabIndex = 1;
             // 
-            // label1
+            // lblMenu
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 42);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "EATEN";
+            this.lblMenu.AutoSize = true;
+            this.lblMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMenu.Location = new System.Drawing.Point(18, 126);
+            this.lblMenu.Name = "lblMenu";
+            this.lblMenu.Size = new System.Drawing.Size(66, 25);
+            this.lblMenu.TabIndex = 2;
+            this.lblMenu.Text = "Menu";
             // 
             // lblPengguna
             // 
@@ -68,20 +68,21 @@
             this.lblPengguna.Text = "Pengguna";
             this.lblPengguna.Click += new System.EventHandler(this.lblPengguna_Click);
             // 
-            // lblMenu
+            // label1
             // 
-            this.lblMenu.AutoSize = true;
-            this.lblMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMenu.Location = new System.Drawing.Point(18, 126);
-            this.lblMenu.Name = "lblMenu";
-            this.lblMenu.Size = new System.Drawing.Size(66, 25);
-            this.lblMenu.TabIndex = 2;
-            this.lblMenu.Text = "Menu";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 42);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "EATEN";
             // 
             // DashboardAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;

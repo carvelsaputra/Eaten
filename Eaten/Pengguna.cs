@@ -31,10 +31,26 @@ namespace Eaten
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
+            if (koneksi.openConnection())
+            {
+                string query = String.Concat("INSERT INTO tb_user(username,password,status) VALUES ('", txtUsername.Text, "',sha1('", txtPassword.Text, "'),'1')");
+                koneksi.cmd = new MySqlCommand(query, koneksi.connection);
+                koneksi.cmd.ExecuteNonQuery();
+                koneksi.closeConnection();
 
+                MessageBox.Show("Register Berhasil !");
+
+            }
+
+            //txtUsername.Enabled = true;
+            //txtPassword.Enabled = true;
+            //btnTambah.Enabled = true;
+
+            //txtUsername.Focus();
         }
         private void bersih()
         {
+            btnHapus.Enabled = false;
             txtUsername.Clear();
             txtPassword.Clear();
             tampilData();
@@ -79,6 +95,83 @@ namespace Eaten
 
             dgvPengguna.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvPengguna.Columns[3].DefaultCellStyle.Padding = new Padding(4, 0, 0, 0);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (koneksi.openConnection())
+            {
+                bool updatePassword = false;
+                string query = String.Concat("SELECT password FROM tb_user WHERE Username = '", txtUsername.Text, "' AND (password = '", txtPassword.Text, "' OR password = sha1('", txtPassword.Text, "'))");
+                koneksi.cmd = new MySqlCommand(query, koneksi.connection);
+                koneksi.dataReader = koneksi.cmd.ExecuteReader();
+
+                if (!koneksi.dataReader.Read())
+                {
+                    updatePassword = true;
+                }
+
+                koneksi.dataReader.Close();
+
+                if (updatePassword)
+                {
+                    query = String.Concat("UPDATE tb_user SET password = sha1('", txtPassword.Text, "') WHERE username ='",txtUsername,"'");
+                }
+
+                koneksi.cmd = new MySqlCommand(query, koneksi.connection);
+                koneksi.cmd.ExecuteNonQuery();
+                koneksi.closeConnection();
+
+                MessageBox.Show("Update Data Sukses!");
+                bersih();
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            bersih();
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text.Length == 0)
+            {
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Yakin ingin hapus data '" + txtUsername.Text + "' ?"
+                                        , "Hapus?"
+                                        , MessageBoxButtons.YesNo
+                                        , MessageBoxIcon.Question
+                                        , MessageBoxDefaultButton.Button2);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (koneksi.openConnection())
+                {
+                    string query = String.Concat("DELETE FROM tb_user WHERE username = '", txtUsername.Text, "'");
+                    koneksi.cmd = new MySqlCommand(query, koneksi.connection);
+                    koneksi.cmd.ExecuteNonQuery();
+
+                    koneksi.closeConnection();
+                    MessageBox.Show("Delete Data Success!");
+                    bersih();
+                }
+            }
+        }
+
+        private void dgvPengguna_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                dgvPengguna.Rows[e.RowIndex].ReadOnly = true;
+                txtUsername.Text = dgvPengguna.Rows[e.RowIndex].Cells["username"].Value.ToString();
+                txtPassword.Text = dgvPengguna.Rows[e.RowIndex].Cells["password"].Value.ToString();
+
+                btnHapus.Enabled = true;
+                txtUsername.Focus();
+            }
         }
     }
 }

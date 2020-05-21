@@ -45,6 +45,7 @@
             this.btnTambah = new System.Windows.Forms.Button();
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPengguna)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.panel1.Controls.Add(this.lblMenu);
             this.panel1.Controls.Add(this.lblPengguna);
             this.panel1.Controls.Add(this.label1);
@@ -99,6 +100,7 @@
             this.dgvPengguna.AllowUserToDeleteRows = false;
             this.dgvPengguna.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPengguna.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.dgvPengguna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPengguna.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.no,
@@ -111,6 +113,7 @@
             this.dgvPengguna.RowHeadersVisible = false;
             this.dgvPengguna.Size = new System.Drawing.Size(485, 195);
             this.dgvPengguna.TabIndex = 3;
+            this.dgvPengguna.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPengguna_CellClick);
             // 
             // no
             // 
@@ -185,37 +188,55 @@
             // 
             // btnTambah
             // 
+            this.btnTambah.BackColor = System.Drawing.Color.Aqua;
             this.btnTambah.Location = new System.Drawing.Point(182, 197);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(203, 23);
             this.btnTambah.TabIndex = 9;
             this.btnTambah.Text = "Tambah Admin";
-            this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.UseVisualStyleBackColor = false;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // btnHapus
             // 
+            this.btnHapus.BackColor = System.Drawing.Color.Red;
             this.btnHapus.Location = new System.Drawing.Point(192, 227);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(75, 58);
             this.btnHapus.TabIndex = 10;
             this.btnHapus.Text = "Hapus";
-            this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.UseVisualStyleBackColor = false;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnRefresh
             // 
+            this.btnRefresh.BackColor = System.Drawing.Color.Lime;
             this.btnRefresh.Location = new System.Drawing.Point(289, 226);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 58);
             this.btnRefresh.TabIndex = 11;
             this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.Aqua;
+            this.btnUpdate.Location = new System.Drawing.Point(182, 292);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(203, 23);
+            this.btnUpdate.TabIndex = 12;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // Pengguna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(987, 450);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.btnTambah);
@@ -256,5 +277,6 @@
         private System.Windows.Forms.Button btnTambah;
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
