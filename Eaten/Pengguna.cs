@@ -171,5 +171,12 @@ namespace Eaten
                 txtUsername.Focus();
             }
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            FrmLogin login = new FrmLogin();
+            login.Show();
+            this.Hide();
+        }
     }
 }

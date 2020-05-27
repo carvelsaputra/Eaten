@@ -35,11 +35,13 @@ namespace Eaten
             cbjenis.Items.Clear();
             cbjenis.Items.Add("Makanan");
             cbjenis.Items.Add("Minuman");
-            cbpilihan.Items.Clear();
+            cbpilihan.DataSource = null;
             txtdeskripsi.Enabled = false;
             txtdeskripsi.Clear();
             txtharga.Enabled = false;
             txtharga.Clear();
+            btnTambah.Enabled = false;
+            btnBayar.Enabled = false;
             nrcjumlah.Value = 1;
             nrcjumlah.Minimum = 1;
             lblTotalBayar.Text = "0";
@@ -55,7 +57,6 @@ namespace Eaten
             lvPesanan.Columns.Add("Jumlah", 90, HorizontalAlignment.Center);
             lvPesanan.Columns.Add("Harga", 110, HorizontalAlignment.Center);
             lvPesanan.Columns.Add("Sub Total", 125, HorizontalAlignment.Center);
-            lvPesanan.Columns.Add("Status", 100, HorizontalAlignment.Center);
             lvPesanan.View = View.Details;
             lvPesanan.GridLines = true;
             lvPesanan.FullRowSelect = true;
@@ -70,35 +71,50 @@ namespace Eaten
 
         private void btnBayar_Click(object sender, EventArgs e)
         {
-            FrmPembayaran bayar = new FrmPembayaran();
+            
+            FrmPembayaran bayar = new FrmPembayaran(Convert.ToInt64(lblTotalBayar.Text.Replace(".","")),Convert.ToInt32(lblTotalItem.Text));
             bayar.Show();
             this.Hide();
         }
 
         private void cbjenis_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbpilihan.Items.Clear();
             if (cbjenis.SelectedItem.ToString().Equals("Makanan"))
             {
-                                string query = "SELECT * FROM tb_menu WHERE status = 1";
+                string query = "SELECT nama_menu FROM tb_menu WHERE status = '1'";
                 koneksi.cmd = new MySqlCommand(query, koneksi.connection);
                 koneksi.dataAdapter = new MySqlDataAdapter();
                 koneksi.dataAdapter.SelectCommand = koneksi.cmd;
                 koneksi.dataSet = new DataSet();
                 koneksi.dataAdapter.Fill(koneksi.dataSet, "datamenu");
-                cbpilihan.DisplayMember = "nama_menu";
-                cbpilihan.DataSource = koneksi.dataSet.Tables["datamenu"];
-
+                for (int i = 0; i < koneksi.dataSet.Tables["datamenu"].Rows.Count; i++)
+                {
+                    cbpilihan.Items.Add(koneksi.dataSet.Tables["datamenu"].Rows[i].ItemArray[0].ToString());
+                }
+                cbpilihan.SelectedIndex = 0;
+                txtdeskripsi.Clear();
+                txtharga.Clear();
+                nrcjumlah.Value = 1;
+                nrcjumlah.Minimum = 1;
             }
             else if (cbjenis.SelectedItem.ToString().Equals("Minuman"))
             {
-               string query = "SELECT * FROM tb_menu WHERE status = 0";
+               string query = "SELECT nama_menu FROM tb_menu WHERE status = '0'";
                 koneksi.cmd = new MySqlCommand(query, koneksi.connection);
                 koneksi.dataAdapter = new MySqlDataAdapter();
                 koneksi.dataAdapter.SelectCommand = koneksi.cmd;
                 koneksi.dataSet = new DataSet();
-                koneksi.dataAdapter.Fill(koneksi.dataSet, "datamenu");
-                cbpilihan.DisplayMember = "nama_menu";
-                cbpilihan.DataSource = koneksi.dataSet.Tables["datamenu"];
+                koneksi.dataAdapter.Fill(koneksi.dataSet, "datamenuu");
+                for (int i = 0; i < koneksi.dataSet.Tables["datamenuu"].Rows.Count; i++)
+                {
+                    cbpilihan.Items.Add(koneksi.dataSet.Tables["datamenuu"].Rows[i].ItemArray[0].ToString());
+                }
+                cbpilihan.SelectedIndex = 0;
+                txtdeskripsi.Clear();
+                txtharga.Clear();
+                nrcjumlah.Value = 1;
+                nrcjumlah.Minimum = 1;
             }
         }
 
@@ -106,6 +122,7 @@ namespace Eaten
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
+            btnBayar.Enabled = true;
             bool isFounded = false;
             int position = -1;
 
@@ -128,7 +145,7 @@ namespace Eaten
             else
             {
                 ListViewItem item = new ListViewItem((lvPesanan.Items.Count + 1).ToString());
-                item.SubItems.Add(cbpilihan.SelectedItem.ToString());
+                item.SubItems.Add(cbpilihan.Text);
                 item.SubItems.Add(cbjenis.SelectedItem.ToString());
                 item.SubItems.Add(nrcjumlah.Value.ToString());
                 item.SubItems.Add(txtharga.Text);
@@ -192,23 +209,18 @@ namespace Eaten
             }
         }
 
-        private void btnCari_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void cbpilihan_SelectedValueChanged(object sender, EventArgs e)
         {
+            btnTambah.Enabled = true;
             if (koneksi.openConnection())
             {
-                Console.WriteLine("testdebug");
-                Console.WriteLine(cbpilihan.Text);
                 string query = String.Concat("SELECT harga,deskripsi FROM tb_menu WHERE nama_menu='", cbpilihan.Text, "'");
                 koneksi.cmd = new MySqlCommand(query, koneksi.connection);
                 koneksi.dataReader = koneksi.cmd.ExecuteReader();
                 if (koneksi.dataReader.Read())
                 {
-                    Console.WriteLine(koneksi.dataReader["harga"].ToString());
                     txtharga.Text = koneksi.dataReader["harga"].ToString();
                     txtdeskripsi.Text = koneksi.dataReader["deskripsi"].ToString();
                 }
@@ -224,10 +236,11 @@ namespace Eaten
 
         }
 
-        private void cbpilihan_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
-            
-           
+            FrmLogin login = new FrmLogin();
+            login.Show();
+            this.Hide();
         }
     }
 }

@@ -69,6 +69,8 @@
             this.txtJumlah.Name = "txtJumlah";
             this.txtJumlah.Size = new System.Drawing.Size(244, 27);
             this.txtJumlah.TabIndex = 1;
+            this.txtJumlah.TextChanged += new System.EventHandler(this.txtJumlah_TextChanged);
+            this.txtJumlah.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtJumlah_KeyPress);
             // 
             // btnBayar
             // 
@@ -80,6 +82,7 @@
             this.btnBayar.TabIndex = 2;
             this.btnBayar.Text = "BAYAR";
             this.btnBayar.UseVisualStyleBackColor = false;
+            this.btnBayar.Click += new System.EventHandler(this.btnBayar_Click);
             // 
             // btnkembali
             // 

@@ -32,5 +32,12 @@ namespace Eaten
             this.Hide();
             menu.Show();
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            FrmLogin login = new FrmLogin();
+            login.Show();
+            this.Hide();
+        }
     }
 }

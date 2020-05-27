@@ -59,7 +59,7 @@
             this.Jumlah = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Harga = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SubTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -70,6 +70,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnLogOut);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(5, 3);
             this.panel1.Name = "panel1";
@@ -325,8 +326,7 @@
             this.Jenis,
             this.Jumlah,
             this.Harga,
-            this.SubTotal,
-            this.Status});
+            this.SubTotal});
             this.lvPesanan.HideSelection = false;
             this.lvPesanan.Location = new System.Drawing.Point(0, 20);
             this.lvPesanan.Name = "lvPesanan";
@@ -361,9 +361,16 @@
             // 
             this.SubTotal.Text = "Sub Total";
             // 
-            // Status
+            // btnLogOut
             // 
-            this.Status.Text = "Status";
+            this.btnLogOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogOut.Location = new System.Drawing.Point(569, 3);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
+            this.btnLogOut.TabIndex = 1;
+            this.btnLogOut.Text = "Log out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // FrmMenuUtama
             // 
@@ -423,8 +430,8 @@
         private System.Windows.Forms.ColumnHeader Jumlah;
         private System.Windows.Forms.ColumnHeader Harga;
         private System.Windows.Forms.ColumnHeader SubTotal;
-        private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Button btnKembali;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }
 
