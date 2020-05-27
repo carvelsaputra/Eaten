@@ -16,7 +16,7 @@ namespace Eaten
     {
         private Connection koneksi = new Connection();
 
-        long harga = 0;
+        //long harga = 0;
         string desk = "";
 
         public FrmMenuUtama()
@@ -102,97 +102,7 @@ namespace Eaten
             }
         }
 
-        private void cbpilihan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cbpilihan.SelectedItem.ToString())
-            {
-                // Makanan
-                case "Bakso":
-                    harga = 12000;
-                    desk = "";
-                    break;
-                case "Mie Ayam":
-                    harga = 15000;
-                    desk = "";
-                    break;
-                case "Nasi Goreng":
-                    harga = 10000;
-                    desk = "";
-                    break;
-                case "Model":
-                    harga = 10000;
-                    desk = "";
-                    break;
-                case "Tekwan":
-                    harga = 10000;
-                    desk = "";
-                    break;
-                case "Laksan":
-                    harga = 15000;
-                    desk = "";
-                    break;
-                case "Lenggang":
-                    harga = 8000;
-                    desk = "";
-                    break;
-                case "Mie Celor":
-                    harga = 10000;
-                    desk = "";
-                    break;
-                case "Celimpungan":
-                    harga = 10000;
-                    desk = "";
-                    break;
-                case "Pempek Kulit":
-                    harga = 2500;
-                    desk = "";
-                    break;
 
-                // Minuman
-                case "Es Kacang Merah":
-                    harga = 10000;
-                    desk = "";
-                    break;
-                case "Sop Buah":
-                    harga = 9000;
-                    desk = "";
-                    break;
-                case "Es Teh Manis":
-                    harga = 4000;
-                    desk = "";
-                    break;
-                case "Es Jeruk":
-                    harga = 7000;
-                    desk = "";
-                    break;
-                case "Es Campur":
-                    harga = 8000;
-                    desk = "";
-                    break;
-                case "Kopi Susu":
-                    harga = 7000;
-                    desk = "";
-                    break;
-                case "Air Mineral":
-                    harga = 3000;
-                    desk = "";
-                    break;
-                case "Jus Mangga":
-                    harga = 7500;
-                    desk = "";
-                    break;
-                case "Pop Ice":
-                    harga = 5000;
-                    desk = "";
-                    break;
-                case "Pocari Sweat":
-                    harga = 8500;
-                    desk = "";
-                    break;
-            }
-            txtharga.Text = harga.ToString("#,##0");
-            txtdeskripsi.Text = desk;
-        }
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
@@ -285,6 +195,39 @@ namespace Eaten
         private void btnCari_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbpilihan_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (koneksi.openConnection())
+            {
+                Console.WriteLine("testdebug");
+                Console.WriteLine(cbpilihan.Text);
+                string query = String.Concat("SELECT harga,deskripsi FROM tb_menu WHERE nama_menu='", cbpilihan.Text, "'");
+                koneksi.cmd = new MySqlCommand(query, koneksi.connection);
+                koneksi.dataReader = koneksi.cmd.ExecuteReader();
+                if (koneksi.dataReader.Read())
+                {
+                    Console.WriteLine(koneksi.dataReader["harga"].ToString());
+                    txtharga.Text = koneksi.dataReader["harga"].ToString();
+                    txtdeskripsi.Text = koneksi.dataReader["deskripsi"].ToString();
+                }
+            }
+            koneksi.closeConnection();
+
+            //txtdeskripsi.Text = "deskripsi";
+            //txtdeskripsi.DataSource = koneksi.dataSet.Tables["datamenu"];
+
+
+            //txtharga.Text = harga.ToString("#,##0");
+            //txtdeskripsi.Text = desk;
+
+        }
+
+        private void cbpilihan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+           
         }
     }
 }

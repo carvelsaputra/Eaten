@@ -60,7 +60,6 @@
             this.Harga = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SubTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnCari = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -89,7 +88,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnCari);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.nrcjumlah);
             this.groupBox1.Controls.Add(this.txtharga);
@@ -162,7 +160,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.pictureBox1.Location = new System.Drawing.Point(381, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(358, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(10, 157);
             this.pictureBox1.TabIndex = 3;
@@ -184,7 +182,7 @@
             this.cbpilihan.Name = "cbpilihan";
             this.cbpilihan.Size = new System.Drawing.Size(211, 21);
             this.cbpilihan.TabIndex = 1;
-            this.cbpilihan.SelectedIndexChanged += new System.EventHandler(this.cbpilihan_SelectedIndexChanged);
+            this.cbpilihan.SelectedValueChanged += new System.EventHandler(this.cbpilihan_SelectedValueChanged);
             // 
             // cbjenis
             // 
@@ -367,16 +365,6 @@
             // 
             this.Status.Text = "Status";
             // 
-            // btnCari
-            // 
-            this.btnCari.Location = new System.Drawing.Point(324, 17);
-            this.btnCari.Name = "btnCari";
-            this.btnCari.Size = new System.Drawing.Size(51, 24);
-            this.btnCari.TabIndex = 5;
-            this.btnCari.Text = "Submit";
-            this.btnCari.UseVisualStyleBackColor = true;
-            this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
-            // 
             // FrmMenuUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,7 +425,6 @@
         private System.Windows.Forms.ColumnHeader SubTotal;
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Button btnKembali;
-        private System.Windows.Forms.Button btnCari;
     }
 }
 
